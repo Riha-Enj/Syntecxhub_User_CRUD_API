@@ -1,0 +1,20 @@
+const express = require("express");
+const product = require("../models/product.model.js");
+const router = express.Router();
+const { getProducts, getSingleProduct, createProduct, updateProduct, deleteProduct, getCategories, filterByCategory, filterByPriceRange } = require('../controllers/product.controller.js');
+
+router.get('/', getProducts);
+
+router.get('/price', filterByPriceRange);
+
+router.get('/category', getCategories);
+router.get('/category/:categoryName', filterByCategory);
+
+router.get('/:id', getSingleProduct);
+router.post('/', createProduct);
+router.put('/:id', updateProduct);
+router.delete('/:id', deleteProduct);
+
+
+
+module.exports = router;
